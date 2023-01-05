@@ -16,9 +16,9 @@ url = os.environ.get('URL')
 available = isAvailable()
 env = sys.argv[1]
 isFood = sys.argv[2]
-time = sys.argv[3]
-order = sys.argv[4]
-print("params: ", { env, isFood, time, order })
+isDrink = sys.argv[3]
+time = sys.argv[4]
+order = sys.argv[5]
 
 # web driver parameters 
 driver = webdriver.Chrome()
@@ -27,10 +27,18 @@ driver.get(url)
 
 # start order
 if available:
-    Order(driver, By, WebDriverWait, EC, TimeoutException, env, isFood, time, order)
+    print("Ordering Available")
+    Order(driver, By, WebDriverWait, EC, TimeoutException, env, isFood, isDrink, time, order)
 else:
     SendText("Online ordering is currently unavailable")
     print("Ordering Unavailable")
+    print("params: ", {
+        "env": env,
+        "isFood": isFood,
+        "isDrink": isDrink,
+        "time": time,
+        "order": order
+    })
     
 # end process
 driver.quit()

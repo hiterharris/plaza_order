@@ -8,7 +8,7 @@ from helpers.checkout import checkout
 class Order():
     load_dotenv()
 
-    def __init__(self, driver, By, WebDriverWait, EC, TimeoutException, env, isFood, time, order): 
+    def __init__(self, driver, By, WebDriverWait, EC, TimeoutException, env, isFood, isDrink, time, order): 
         url = os.environ.get('URL')
         phone = os.environ.get("PHONE")
         email = os.environ.get("EMAIL")
@@ -35,7 +35,7 @@ class Order():
             print('login timeout')
 
         # menu
-        menu(driver, order, drink, By, WebDriverWait, EC, TimeoutException, email, password)
+        menu(driver, order, isFood, isDrink, By, WebDriverWait, EC, TimeoutException, email, password)
 
         # checkout
         checkout(driver, By, WebDriverWait, EC, TimeoutException, phone, email, password, env)
