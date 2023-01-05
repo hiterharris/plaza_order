@@ -2,6 +2,7 @@ import os
 import sys
 from dotenv import load_dotenv
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -21,8 +22,10 @@ time = sys.argv[4]
 order = sys.argv[5]
 
 # web driver parameters 
-driver = webdriver.Chrome()
-driver.maximize_window()
+options = Options()
+options.headless = True
+driver = webdriver.Chrome(options=options)
+# driver.maximize_window()
 driver.get(url)
 
 # start order
