@@ -12,14 +12,21 @@ from helpers.isAvailable import isAvailable
 from helpers.Order import Order
 
 # arguments
-load_dotenv()
-url = os.environ.get('URL')
+# load_dotenv()
+# url = os.environ.get('URL')
+# available = isAvailable()
+# env = sys.argv[1]
+# isFood = sys.argv[2]
+# isDrink = sys.argv[3]
+# time = sys.argv[4]
+# order = sys.argv[5]
+url = "https://www.toasttab.com/rvplaza/v3/"
 available = isAvailable()
-env = sys.argv[1]
-isFood = sys.argv[2]
-isDrink = sys.argv[3]
-time = sys.argv[4]
-order = sys.argv[5]
+env = "dev"
+isFood = "true"
+isDrink = "false"
+time = "ASAP"
+order = "BYO_Sandwich"
 
 # web driver parameters 
 options = Options()
