@@ -41,7 +41,7 @@ class Order():
         checkout(driver, By, WebDriverWait, EC, TimeoutException, phone, email, password, env)
     
         # confirmation text
-        if env == 'prod':
-            SendText("Online Order Placed!" + "\nTime: " + time + "\nOrder: " + order)
-        else:
+        if env == 'dev':
             SendText("TEST Order Complete!" + "\nTime: " + time + "\nOrder: " + order)
+        else:
+            SendText("Online Order Placed!" + "\nTime: " + time + "\nOrder: " + order)

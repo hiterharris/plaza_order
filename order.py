@@ -1,6 +1,4 @@
-import os
 import sys
-from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -12,21 +10,33 @@ from helpers.isAvailable import isAvailable
 from helpers.Order import Order
 
 # arguments
-# load_dotenv()
-# url = os.environ.get('URL')
-# available = isAvailable()
+available = isAvailable()
+url = "https://www.toasttab.com/rvplaza/v3/"
+# env = "dev"
+# isFood = "true"
+# isDrink = "false"
+# time = "ASAP"
+# order = "BYO_Sandwich"
 # env = sys.argv[1]
 # isFood = sys.argv[2]
 # isDrink = sys.argv[3]
 # time = sys.argv[4]
 # order = sys.argv[5]
-url = "https://www.toasttab.com/rvplaza/v3/"
-available = isAvailable()
-env = "dev"
-isFood = "true"
-isDrink = "false"
-time = "ASAP"
-order = "BYO_Sandwich"
+
+if (sys.argv[2] or sys.argv[3] or sys.argv[4] or sys.argv[5]) == "undefined" :
+    print("no params")
+    env = "dev"
+    isFood = "true"
+    isDrink = "false"
+    time = "ASAP"
+    order = "BYO_Sandwich"
+else:
+    print("params")
+    env = sys.argv[1]
+    isFood = sys.argv[2]
+    isDrink = sys.argv[3]
+    time = sys.argv[4]
+    order = sys.argv[5]
 
 # web driver parameters 
 options = Options()
@@ -42,13 +52,6 @@ if available:
 else:
     SendText("Online ordering is currently unavailable")
     print("Ordering Unavailable")
-    print("params: ", {
-        "env": env,
-        "isFood": isFood,
-        "isDrink": isDrink,
-        "time": time,
-        "order": order
-    })
     
 # end process
 driver.quit()
