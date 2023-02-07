@@ -12,16 +12,6 @@ from helpers.Order import Order
 # arguments
 available = isAvailable()
 url = "https://www.toasttab.com/rvplaza/v3/"
-# env = "dev"
-# isFood = "true"
-# isDrink = "false"
-# time = "ASAP"
-# order = "BYO_Sandwich"
-# env = sys.argv[1]
-# isFood = sys.argv[2]
-# isDrink = sys.argv[3]
-# time = sys.argv[4]
-# order = sys.argv[5]
 
 if (sys.argv[2] or sys.argv[3] or sys.argv[4] or sys.argv[5]) == "undefined" :
     print("no params")
@@ -42,7 +32,6 @@ else:
 options = Options()
 options.headless = True
 driver = webdriver.Chrome(options=options)
-# driver.maximize_window()
 driver.get(url)
 
 # start order
